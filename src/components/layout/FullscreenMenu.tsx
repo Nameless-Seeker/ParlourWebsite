@@ -86,6 +86,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, onClose 
           animate="open"
           exit="closed"
           variants={menuVariants}
+          data-lenis-prevent
           className="fixed inset-0 z-[100] flex flex-col justify-between bg-espresso-950 text-ivory-50 overflow-hidden"
         >
           {/* Subtle warm champagne radial aura */}
@@ -99,35 +100,38 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, onClose 
           />
 
           {/* Top Bar inside Menu */}
-          <div className="relative z-10 flex items-center justify-between px-6 py-7 sm:px-12 md:px-16 border-b border-white/10">
+          <div className="relative z-10 flex-shrink-0 flex items-center justify-between px-4 sm:px-12 md:px-16 py-4 sm:py-6 border-b border-white/10">
             <a
               href="#hero"
               onClick={onClose}
-              className="font-serif text-2xl sm:text-3xl tracking-widest text-ivory-50 uppercase flex items-center gap-2"
+              className="font-serif text-xl sm:text-3xl tracking-widest text-ivory-50 uppercase flex items-center gap-2"
             >
               <span>{salonData.name}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
             </a>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <ThemeToggle showLabel />
 
               <button
                 onClick={onClose}
-                className="group flex items-center gap-2.5 text-xs sm:text-sm uppercase tracking-widest text-ivory-200/80 hover:text-white transition-colors p-2 cursor-pointer"
+                className="group flex items-center gap-2 text-xs sm:text-sm uppercase tracking-widest text-ivory-200/80 hover:text-white transition-colors p-1.5 sm:p-2 cursor-pointer"
                 aria-label="Close navigation menu"
               >
                 <span className="hidden sm:inline">Close</span>
-                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-gold-400 group-hover:bg-gold-500/10 transition-all">
-                  <X className="w-5 h-5 text-ivory-50 transition-transform group-hover:rotate-90 duration-300" />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-gold-400 group-hover:bg-gold-500/10 transition-all">
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-ivory-50 transition-transform group-hover:rotate-90 duration-300" />
                 </div>
               </button>
             </div>
           </div>
 
-          {/* Center Links Grid */}
-          <div className="relative z-10 flex-1 flex items-center px-6 sm:px-12 md:px-16 py-8 overflow-y-auto">
-            <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Center Links Grid (Scrollable, starts from top on mobile so 01-04 are never clipped) */}
+          <div
+            data-lenis-prevent
+            className="relative z-10 flex-1 overflow-y-auto px-5 sm:px-12 md:px-16 py-6 sm:py-10 overscroll-contain"
+          >
+            <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start lg:my-auto">
               {/* Navigation Items (Left/Main) */}
               <motion.ul
                 variants={linkContainerVariants}
@@ -146,7 +150,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, onClose 
                         </span>
                       )}
                       <span className="relative overflow-hidden">
-                        <span className="block font-serif text-3xl sm:text-5xl md:text-6xl font-light tracking-wide text-ivory-100 group-hover:text-gold-300 transition-colors duration-300">
+                        <span className="block font-serif text-xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide [word-spacing:0.2em] sm:[word-spacing:0.25em] text-ivory-100 group-hover:text-gold-300 transition-colors duration-300">
                           {item.label}
                         </span>
                         {/* Animated underline wipe like hackspire */}
@@ -180,17 +184,17 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, onClose 
 
                 <div className="pt-2 flex flex-col gap-3">
                   <a
-                    href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20Aurelia%20Atelier,%20I%20would%20like%20to%20inquire%20about%20booking%20and%20academy%20courses.`}
+                    href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20Stylish%20Beauty%20Salon,%20I%20would%20like%20to%20inquire%20about%20booking%20an%20appointment%20or%20course.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-gold-500 text-espresso-950 font-medium text-xs tracking-widest uppercase hover:bg-gold-400 transition-all duration-300 shadow-glow-gold justify-center"
+                    className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-emerald-500 text-white font-medium text-xs tracking-widest uppercase hover:bg-emerald-400 transition-all duration-300 shadow-glow-gold justify-center"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>WhatsApp Concierge</span>
                   </a>
 
                   <a
-                    href={`tel:${salonData.phone}`}
+                    href={`tel:${salonData.phoneRaw}`}
                     className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full border border-white/20 text-ivory-100 text-xs tracking-widest uppercase hover:border-gold-400 hover:text-gold-300 transition-all duration-300 justify-center"
                   >
                     <Phone className="w-4 h-4" />
@@ -202,7 +206,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, onClose 
           </div>
 
           {/* Footer Bar inside Menu */}
-          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between px-6 py-5 sm:px-12 md:px-16 border-t border-white/10 text-xs tracking-widest text-ivory-300/60 uppercase">
+          <div className="relative z-10 flex-shrink-0 flex flex-col sm:flex-row items-center justify-between px-6 py-4 sm:px-12 md:px-16 border-t border-white/10 text-xs tracking-widest text-ivory-300/60 uppercase">
             <span>{salonData.tagline}</span>
             <div className="flex items-center gap-6 mt-2 sm:mt-0">
               <a

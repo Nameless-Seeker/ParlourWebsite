@@ -30,7 +30,9 @@ export const FloatingWhatsApp: React.FC = () => {
           className="fixed bottom-6 right-6 z-40 flex items-center"
         >
           <a
-            href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20Aurelia%20Atelier,%20I%20would%20like%20to%20inquire%20about%20booking%20and%20academy%20courses.`}
+            href={`https://wa.me/${salonData.whatsappNumber}?text=${encodeURIComponent(
+              `Hello ${salonData.name}, I would like to inquire about booking appointments and courses.`
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2.5 px-4 sm:px-5 py-3 rounded-full bg-espresso-950/90 text-ivory-50 border border-gold-400/50 backdrop-blur-md shadow-2xl hover:bg-gold-500 hover:text-espresso-950 transition-all duration-300 focus:outline-none"

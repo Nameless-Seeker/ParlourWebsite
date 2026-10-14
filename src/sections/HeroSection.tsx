@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Sparkles, GraduationCap, ChevronDown } from 'lucide-react';
+import { ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,7 +95,7 @@ export const HeroSection: React.FC = () => {
     <section
       id="hero"
       ref={heroRef}
-      className="relative min-h-[100svh] w-full overflow-hidden select-none bg-espresso-950 flex flex-col justify-between"
+      className="relative min-h-[100svh] w-full overflow-hidden select-none bg-ivory-100 dark:bg-espresso-950 flex flex-col justify-between transition-colors duration-500"
     >
       {/* 1. Ambient Editorial Visual Layer */}
       <div
@@ -106,19 +106,19 @@ export const HeroSection: React.FC = () => {
         <img
           src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=2600&auto=format&fit=crop"
           alt="Editorial bridal makeup and beauty aesthetics"
-          className="h-full w-full object-cover object-[50%_35%] filter brightness-[0.72] contrast-[1.08] saturate-[0.95]"
+          className="h-full w-full object-cover object-[50%_35%] filter brightness-[0.78] dark:brightness-[0.72] contrast-[1.08] saturate-[0.95]"
           loading="eager"
         />
 
         {/* Cinematic dark champagne & espresso vignette overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-espresso-950/80 via-espresso-950/45 to-espresso-950/95" />
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-espresso-950/30 to-espresso-950/80 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-espresso-950/70 dark:from-espresso-950/80 via-espresso-950/35 dark:via-espresso-950/45 to-ivory-50/90 dark:to-espresso-950/95 transition-all duration-500" />
+        <div className="absolute inset-0 bg-radial-gradient from-transparent via-espresso-950/20 to-espresso-950/60 dark:to-espresso-950/80 mix-blend-multiply" />
       </div>
 
       {/* Subtle Ambient Golden Glow (inspired by hackspire's radial glow) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vh] rounded-full blur-[120px] opacity-25"
+        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vh] rounded-full blur-[120px] opacity-25 dark:opacity-25"
         style={{
           background:
             'radial-gradient(circle, rgba(197, 168, 128, 0.45) 0%, rgba(234, 216, 207, 0.15) 50%, transparent 80%)',
@@ -126,21 +126,21 @@ export const HeroSection: React.FC = () => {
       />
 
       {/* Top spacing for fixed header */}
-      <div className="h-24 sm:h-32" />
+      <div className="h-20 sm:h-32" />
 
       {/* 2. Hero Center Editorial Content */}
       <div
         ref={contentRef}
-        className="relative z-20 flex flex-col items-center justify-center px-6 sm:px-10 text-center max-w-5xl mx-auto my-auto transform-gpu will-change-transform"
+        className="relative z-20 flex flex-col items-center justify-center px-4 sm:px-10 text-center max-w-5xl mx-auto my-auto transform-gpu will-change-transform"
       >
         {/* Eyebrow / Brand Seal Badge */}
-        <div className="hero-eyebrow inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-400/40 bg-white/5 backdrop-blur-md text-gold-300 text-[0.7rem] sm:text-xs font-medium tracking-[0.25em] uppercase mb-6 shadow-glow-gold">
-          <Sparkles className="w-3.5 h-3.5 text-gold-400 animate-pulse" />
-          <span>Haute Bridal Artistry & Masterclass Academy</span>
+        <div className="hero-eyebrow inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-gold-400/40 bg-white/5 backdrop-blur-md text-gold-300 text-[0.6rem] sm:text-xs font-medium tracking-[0.12em] sm:tracking-[0.25em] uppercase mb-4 sm:mb-6 shadow-glow-gold max-w-[92vw] sm:max-w-none text-center">
+          <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gold-400 animate-pulse flex-shrink-0" />
+          <span className="truncate">Haute Bridal Artistry &amp; Masterclass Academy</span>
         </div>
 
         {/* Master Headline (Cormorant Garamond editorial serif) */}
-        <h1 className="hero-title font-serif text-[clamp(2.75rem,7vw,5.5rem)] font-light leading-[1.04] tracking-tight text-ivory-50 max-w-4xl drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]">
+        <h1 className="hero-title font-serif text-[clamp(2.15rem,6.5vw,5.5rem)] font-light leading-[1.06] sm:leading-[1.04] tracking-tight text-ivory-50 max-w-4xl drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]">
           Where Artistry Meets <br className="hidden sm:inline" />
           <span className="font-serif italic font-normal text-gold-300">
             Timeless Elegance
@@ -148,17 +148,17 @@ export const HeroSection: React.FC = () => {
         </h1>
 
         {/* Narrative Tagline */}
-        <p className="hero-tagline mt-6 font-sans text-sm sm:text-base md:text-lg text-ivory-200/80 max-w-2xl font-light leading-relaxed tracking-wide drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)]">
-          An intimate Kolkata atelier dedicated to bespoke bridal aesthetics, skin rituals,
-          and professional makeup artistry education for aspiring masters.
+        <p className="hero-tagline mt-3 sm:mt-6 font-sans text-xs sm:text-base md:text-lg text-ivory-200/80 max-w-2xl font-light leading-relaxed tracking-wide drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)]">
+          A premier salon in Konnagar, Kanaipur dedicated to specialized hair transformations,
+          clinical skin rituals, and professional beauty treatments.
         </p>
 
         {/* Dual CTA Button Deck (Hackspire pill inspired with glowing physics) */}
-        <div className="hero-ctas mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
+        <div className="hero-ctas mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 w-auto">
           {/* Primary CTA: Book an Experience */}
           <a
             href="#contact"
-            className="group relative flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-full bg-ivory-50 text-espresso-950 font-sans font-semibold text-xs tracking-widest uppercase overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-luxury-elevated"
+            className="group relative inline-flex items-center justify-center gap-2 sm:gap-3 w-auto min-w-[210px] max-w-[260px] px-5 sm:px-8 py-2.5 sm:py-4 rounded-full bg-ivory-50 text-espresso-950 font-sans font-semibold text-[0.7rem] sm:text-xs tracking-widest uppercase overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-luxury-elevated"
           >
             <span
               className="pointer-events-none absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -167,16 +167,16 @@ export const HeroSection: React.FC = () => {
               }}
             />
             <span className="relative z-10">Reserve An Experience</span>
-            <ArrowRight className="w-4 h-4 text-espresso-950 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-espresso-950 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
 
-          {/* Secondary CTA: Explore Academy */}
+          {/* Secondary CTA: Explore Services */}
           <a
-            href="#academy"
-            className="group relative flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-full border border-ivory-50/30 bg-white/5 backdrop-blur-md text-ivory-100 font-sans font-medium text-xs tracking-widest uppercase overflow-hidden transition-all duration-300 hover:border-gold-400 hover:text-gold-300 hover:bg-gold-500/10 active:scale-[0.98]"
+            href="#services"
+            className="group relative inline-flex items-center justify-center gap-2 sm:gap-3 w-auto min-w-[210px] max-w-[260px] px-5 sm:px-8 py-2.5 sm:py-4 rounded-full border border-ivory-50/30 bg-white/5 backdrop-blur-md text-ivory-100 font-sans font-medium text-[0.7rem] sm:text-xs tracking-widest uppercase overflow-hidden transition-all duration-300 hover:border-gold-400 hover:text-gold-300 hover:bg-gold-500/10 active:scale-[0.98]"
           >
-            <GraduationCap className="w-4 h-4 text-gold-400 transition-transform duration-300 group-hover:scale-110" />
-            <span>Explore Academy</span>
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold-400 transition-transform duration-300 group-hover:scale-110" />
+            <span>Explore Services</span>
           </a>
         </div>
       </div>

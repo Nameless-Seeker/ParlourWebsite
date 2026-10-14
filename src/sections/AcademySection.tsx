@@ -186,8 +186,8 @@ export const AcademySection: React.FC = () => {
           </p>
         </div>
 
-        {/* Four Core Pillars / Perks Grid (Slow staggered scrub reveal) */}
-        <div ref={perksRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 md:mb-20">
+        {/* Core Pillars / Perks Grid (Slow staggered scrub reveal) */}
+        <div ref={perksRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 md:mb-20">
           {academyPerks.map((perk, index) => (
             <div
               key={index}

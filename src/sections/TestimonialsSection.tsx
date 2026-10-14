@@ -108,7 +108,7 @@ export const TestimonialsSection: React.FC = () => {
           </h2>
 
           <p className="font-sans text-sm sm:text-base text-taupe-600 dark:text-ivory-300/80 max-w-xl">
-            Words from our celebrated brides and certified academy graduates who trusted us with their defining moments.
+            Words from our celebrated clients and brides who trusted us with their defining transformations.
           </p>
         </div>
 

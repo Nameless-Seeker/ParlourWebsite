@@ -10,7 +10,7 @@ import { Clock, Check, Sparkles, MessageCircle, ArrowRight } from 'lucide-react'
 gsap.registerPlugin(ScrollTrigger);
 
 export const ServicesSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<ServiceCategory>('bridal');
+  const [activeCategory, setActiveCategory] = useState<ServiceCategory>('grooming');
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
@@ -42,26 +42,48 @@ export const ServicesSection: React.FC = () => {
       );
 
       // 2. Slow staggered scroll reveal for service cards (Hackspire cards pattern)
-      const cards = cardsContainerRef.current?.querySelectorAll('.service-card-item');
-      if (cards && cards.length > 0) {
-        gsap.fromTo(
-          cards,
-          { opacity: 0.15, y: 75, scale: 0.95 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            stagger: 0.18,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: cardsContainerRef.current,
-              start: 'top 80%',
-              end: 'top 40%',
-              scrub: 1.4,
-            },
-          }
-        );
-      }
+      const mm = gsap.matchMedia();
+      mm.add('(min-width: 768px)', () => {
+        const cards = cardsContainerRef.current?.querySelectorAll('.service-card-item');
+        if (cards && cards.length > 0) {
+          gsap.fromTo(
+            cards,
+            { opacity: 0.15, y: 75, scale: 0.95 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              stagger: 0.18,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: cardsContainerRef.current,
+                start: 'top 80%',
+                end: 'top 40%',
+                scrub: 1.4,
+              },
+            }
+          );
+        }
+      });
+
+      mm.add('(max-width: 767px)', () => {
+        if (cardsContainerRef.current) {
+          gsap.fromTo(
+            cardsContainerRef.current,
+            { opacity: 0.2, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: cardsContainerRef.current,
+                start: 'top 85%',
+              },
+            }
+          );
+        }
+      });
 
       // 3. Slow reveal for consultation callout banner
       gsap.fromTo(
@@ -89,41 +111,40 @@ export const ServicesSection: React.FC = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="relative w-full bg-ivory-100 dark:bg-[#14100E] px-6 sm:px-12 md:px-16 py-20 md:py-32 text-espresso-900 dark:text-ivory-100 border-t border-taupe-200/50 dark:border-white/10 transition-colors duration-500 overflow-hidden"
+      className="relative w-full bg-ivory-100 dark:bg-[#14100E] px-4 sm:px-10 md:px-16 py-16 sm:py-24 md:py-32 text-espresso-900 dark:text-ivory-100 border-t border-taupe-200/50 dark:border-white/10 transition-colors duration-500 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header (Slow reveal on scroll) */}
-        <div ref={headerRef} className="flex flex-col items-center text-center mb-14 md:mb-18 transform-gpu">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold-500/30 dark:border-gold-400/30 bg-gold-500/10 text-gold-700 dark:text-gold-400 text-xs font-medium tracking-[0.25em] uppercase mb-3">
+        <div ref={headerRef} className="flex flex-col items-center text-center mb-12 sm:mb-18 transform-gpu">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 rounded-full border border-gold-500/30 dark:border-gold-400/30 bg-gold-500/10 text-gold-700 dark:text-gold-400 text-[0.65rem] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Chapter II • Curated Offerings</span>
+            <span>Chapter II • Client Services</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-espresso-950 dark:text-ivory-50 mb-4">
-            Bespoke Services & <span className="italic font-normal text-gold-600 dark:text-gold-400">Rituals</span>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-espresso-950 dark:text-ivory-50 mb-3 sm:mb-4">
+            Services We <span className="italic font-normal text-gold-600 dark:text-gold-400">Provide</span>
           </h2>
 
-          <p className="font-sans text-sm sm:text-base text-taupe-600 dark:text-ivory-300/80 max-w-2xl">
-            Each experience is individually curated using dermatologist-certified formulations,
-            couture techniques, and unparalleled attention to detail.
+          <p className="font-sans text-xs sm:text-base text-taupe-600 dark:text-ivory-300/80 max-w-2xl px-2 sm:px-0">
+            A comprehensive selection of specialized hair care, clinical skin therapies, and grooming treatments delivered with personal attention for our valued clients.
           </p>
 
           {/* Interactive Category Filter Pills */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/10 shadow-luxury-subtle max-w-full">
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl sm:rounded-full bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/10 shadow-luxury-subtle max-w-full">
             {serviceCategories.map((category) => {
               const isActive = activeCategory === category.id;
               return (
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id as ServiceCategory)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium tracking-wider uppercase transition-colors duration-300 focus:outline-none cursor-pointer ${
+                  className={`relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-[0.7rem] sm:text-sm font-medium tracking-wider uppercase transition-colors duration-300 focus:outline-none cursor-pointer ${
                     isActive ? 'text-ivory-50 dark:text-espresso-950 font-semibold' : 'text-taupe-600 dark:text-ivory-300/70 hover:text-espresso-950 dark:hover:text-white'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeCategoryPill"
-                      className="absolute inset-0 rounded-full bg-espresso-900 dark:bg-gold-400 shadow-sm"
+                      className="absolute inset-0 rounded-xl sm:rounded-full bg-espresso-900 dark:bg-gold-400 shadow-sm"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -147,8 +168,22 @@ export const ServicesSection: React.FC = () => {
           )}
         </div>
 
-        {/* Services Editorial Grid (Slow staggered scrub reveal) */}
-        <div ref={cardsContainerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Mobile Swipe Hint */}
+        <div className="flex md:hidden items-center justify-between text-xs text-taupe-500 dark:text-ivory-300/60 mb-3 px-1">
+          <span className="flex items-center gap-1.5 font-medium tracking-wide">
+            <Sparkles className="w-3.5 h-3.5 text-gold-500" />
+            <span>Swipe services horizontally</span>
+          </span>
+          <span className="text-[10px] tracking-widest uppercase font-mono text-gold-600 dark:text-gold-400">
+            Swipe &rarr;
+          </span>
+        </div>
+
+        {/* Services Editorial Track / Grid (Horizontal snap carousel on phone, grid on desktop) */}
+        <div
+          ref={cardsContainerRef}
+          className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none gap-4 sm:gap-6 md:gap-8 pb-6 md:pb-0 -mx-4 px-4 sm:-mx-10 sm:px-10 md:mx-0 md:px-0 md:grid-cols-2 lg:grid-cols-3 no-scrollbar overscroll-x-contain"
+        >
           <AnimatePresence mode="popLayout">
             {filteredServices.map((service) => (
               <motion.article
@@ -158,7 +193,7 @@ export const ServicesSection: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.4 }}
-                className="service-card-item group flex flex-col bg-ivory-50 dark:bg-espresso-900/90 rounded-2xl overflow-hidden border border-taupe-200/80 dark:border-white/10 shadow-luxury-subtle hover:shadow-luxury-elevated transition-all duration-500 transform-gpu will-change-transform"
+                className="service-card-item group flex flex-col w-[84vw] xs:w-[320px] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:max-w-none md:flex-shrink bg-ivory-50 dark:bg-espresso-900/90 rounded-2xl overflow-hidden border border-taupe-200/80 dark:border-white/10 shadow-luxury-subtle hover:shadow-luxury-elevated transition-all duration-500 transform-gpu will-change-transform"
               >
                 {/* Image Cover Container with Inner Parallax */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-taupe-100">
@@ -184,13 +219,6 @@ export const ServicesSection: React.FC = () => {
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-espresso-950/70 backdrop-blur-md text-ivory-100 text-[0.65rem] font-medium tracking-wider">
                       <Clock className="w-3 h-3 text-gold-400" />
                       {service.duration}
-                    </span>
-                  </div>
-
-                  {/* Pricing on Image Base */}
-                  <div className="absolute bottom-3 left-4 right-4 flex items-baseline justify-between text-ivory-50">
-                    <span className="font-serif text-xl sm:text-2xl font-normal text-gold-300">
-                      {service.pricePlaceholder}
                     </span>
                   </div>
                 </div>
@@ -231,7 +259,9 @@ export const ServicesSection: React.FC = () => {
                   {/* Reserve Button (Direct WhatsApp Inquiry with Pre-filled service name) */}
                   <div className="pt-2 border-t border-taupe-200/60 dark:border-white/10">
                     <a
-                      href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20Aurelia%20Atelier,%20I%20would%20like%20to%20reserve%20an%20appointment%20for:%20${encodeURIComponent(
+                      href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20${encodeURIComponent(
+                        salonData.name
+                      )},%20I%20would%20like%20to%20reserve%20an%20appointment%20for:%20${encodeURIComponent(
                         service.title
                       )}`}
                       target="_blank"
@@ -262,17 +292,19 @@ export const ServicesSection: React.FC = () => {
 
           <div className="relative z-10 text-center md:text-left max-w-2xl">
             <h3 className="font-serif text-2xl sm:text-3xl text-ivory-100 font-light mb-2">
-              Unsure which bridal look or skin ritual suits your occasion?
+              Unsure which hair treatment, facial or styling service suits you best?
             </h3>
             <p className="font-sans text-xs sm:text-sm text-ivory-200/80 leading-relaxed">
-              We offer bespoke one-on-one bridal trials and skin diagnostic consultations.
-              Speak directly with our senior artist to craft your customized schedule.
+              We offer personalized hair diagnostics, skin consultations, and customized beauty packages.
+              Speak directly with our specialists to plan your appointment.
             </p>
           </div>
 
           <div className="relative z-10 flex-shrink-0">
             <a
-              href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20Aurelia%20Atelier,%20I%20would%20like%20to%20schedule%20a%20complimentary%20consultation.`}
+              href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20${encodeURIComponent(
+                salonData.name
+              )},%20I%20would%20like%20to%20schedule%20a%20consultation.`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gold-500 text-espresso-950 font-semibold text-xs tracking-widest uppercase hover:bg-gold-400 transition-all duration-300 shadow-glow-gold"

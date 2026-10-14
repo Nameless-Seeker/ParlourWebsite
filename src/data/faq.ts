@@ -17,17 +17,17 @@ export const faqData: FAQItem[] = [
   },
   {
     id: 'faq-3',
-    category: 'academy',
-    question: 'Do I need prior makeup experience to enroll in the Academy Diploma?',
+    category: 'general',
+    question: 'What is the difference between Hair Straightening and Smoothening?',
     answer:
-      'Not at all. Our flagship 8-Week Professional Diploma is structured from absolute fundamentals (color theory, sanitation, skin prep) all the way to advanced airbrushing and runway styling. We guide each student step by step.',
+      'Hair Straightening (or Rebonding) permanently restructures the hair bonds to achieve sleek, pin-straight tresses. Smoothening (such as Keratin or Kera Smooth) eliminates frizz and softens hair texture while retaining natural bounce and volume.',
   },
   {
     id: 'faq-4',
-    category: 'academy',
-    question: 'Is the professional makeup vanity kit included in the tuition fee?',
+    category: 'general',
+    question: 'How long does a Keratin, Botox, or Nanoplastia treatment last?',
     answer:
-      'Yes, for our 8-Week Diploma and 2-Week Airbrush Masterclass, a fully equipped vanity kit containing professional-grade brushes, international HD base palettes, and sanitation tools is provided for you to keep.',
+      'With proper post-care using recommended sulfate-free shampoos and nourishing serums, our Keratin, Botox, and Nanoplastia treatments last between 3 to 6 months, keeping your tresses ultra-smooth, glossy, and manageable.',
   },
   {
     id: 'faq-5',

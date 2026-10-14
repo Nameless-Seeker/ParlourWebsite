@@ -67,27 +67,27 @@ export const FAQSection: React.FC = () => {
     <section
       id="faq"
       ref={sectionRef}
-      className="relative w-full bg-ivory-100 dark:bg-[#14100E] px-6 sm:px-12 md:px-16 py-20 md:py-32 text-espresso-900 dark:text-ivory-100 border-t border-taupe-200/60 dark:border-white/10 transition-colors duration-500 overflow-hidden"
+      className="relative w-full bg-ivory-100 dark:bg-[#14100E] px-4 sm:px-10 md:px-16 py-16 sm:py-24 md:py-32 text-espresso-900 dark:text-ivory-100 border-t border-taupe-200/60 dark:border-white/10 transition-colors duration-500 overflow-hidden"
     >
       <div className="max-w-4xl mx-auto">
         {/* Section Header (Slow reveal on scroll) */}
-        <div ref={headerRef} className="flex flex-col items-center text-center mb-14 md:mb-18 transform-gpu">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold-500/30 dark:border-gold-400/30 bg-gold-500/10 text-gold-700 dark:text-gold-400 text-xs font-medium tracking-[0.25em] uppercase mb-3">
+        <div ref={headerRef} className="flex flex-col items-center text-center mb-12 sm:mb-18 transform-gpu">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 rounded-full border border-gold-500/30 dark:border-gold-400/30 bg-gold-500/10 text-gold-700 dark:text-gold-400 text-[0.65rem] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-3">
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>Chapter VII • Inquiries & Guidance</span>
+            <span>Chapter VI • Inquiries &amp; Guidance</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-espresso-950 dark:text-ivory-50 mb-3">
             Frequently Asked <span className="italic font-normal text-gold-600 dark:text-gold-400">Questions</span>
           </h2>
 
-          <p className="font-sans text-sm sm:text-base text-taupe-600 dark:text-ivory-300/80 max-w-xl">
-            Everything you need to know about bridal booking timelines, trials, academy tuitions, and travel logistics.
+          <p className="font-sans text-xs sm:text-base text-taupe-600 dark:text-ivory-300/80 max-w-xl px-2 sm:px-0">
+            Everything you need to know about salon booking timelines, hair treatments, bridal trials, and appointments.
           </p>
         </div>
 
         {/* FAQ Accordion List (Slow staggered scrub reveal) */}
-        <div ref={faqListRef} className="space-y-4">
+        <div ref={faqListRef} className="space-y-3.5 sm:space-y-4">
           {faqData.map((item) => {
             const isOpen = openFaqId === item.id;
             return (
@@ -97,10 +97,10 @@ export const FAQSection: React.FC = () => {
               >
                 <button
                   onClick={() => toggleFaq(item.id)}
-                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
+                  className="w-full p-4.5 sm:p-7 text-left flex items-center justify-between gap-3 sm:gap-4 focus:outline-none cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-serif text-xl sm:text-2xl text-espresso-950 dark:text-ivory-50 font-normal leading-snug">
+                  <span className="font-serif text-lg sm:text-2xl text-espresso-950 dark:text-ivory-50 font-normal leading-snug">
                     {item.question}
                   </span>
                   <div
@@ -138,7 +138,9 @@ export const FAQSection: React.FC = () => {
         <div className="mt-12 text-center text-xs sm:text-sm text-taupe-600 dark:text-ivory-400 flex items-center justify-center gap-2">
           <span>Have an unanswered question?</span>
           <a
-            href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20Aurelia%20Atelier,%20I%20have%20a%20question%20regarding%20services%20and%20academy.`}
+            href={`https://wa.me/${salonData.whatsappNumber}?text=${encodeURIComponent(
+              `Hello ${salonData.name}, I have a question regarding services and appointments.`
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-gold-700 dark:text-gold-400 font-semibold underline underline-offset-4 hover:text-espresso-950 dark:hover:text-white transition-colors inline-flex items-center gap-1"

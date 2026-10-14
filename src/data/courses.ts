@@ -16,11 +16,6 @@ export const academyPerks: AcademyPerk[] = [
     description: 'Graduation shoot with professional studio lighting and models to build your high-end client showcase.',
     iconName: 'Camera',
   },
-  {
-    title: 'Accredited Certification & Alumni Network',
-    description: 'Recognized diploma credentials paired with ongoing lifetime master mentorship and bridal client referrals.',
-    iconName: 'GraduationCap',
-  },
 ];
 
 export const coursesData: CourseItem[] = [

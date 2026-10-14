@@ -144,7 +144,7 @@ export const IntroSection: React.FC = () => {
             >
               <img
                 src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=1200&auto=format&fit=crop"
-                alt="Intimate bridal makeup and beauty artistry at Aurelia Atelier"
+                alt="Intimate bridal makeup and beauty artistry at Stylish Beauty Salon"
                 className="w-full h-full object-cover object-[50%_25%] filter contrast-[1.04] brightness-[0.98]"
                 loading="eager"
               />
@@ -156,7 +156,7 @@ export const IntroSection: React.FC = () => {
                   “Precision in every stroke”
                 </p>
                 <p className="font-sans text-[0.65rem] tracking-widest uppercase text-ivory-300">
-                  Kolkata Flagship Atelier • Since 2012
+                  Konnagar, Kanaipur • Gourango Road
                 </p>
               </div>
             </div>
@@ -179,9 +179,8 @@ export const IntroSection: React.FC = () => {
             </div>
 
             <p className="font-sans text-sm sm:text-base text-taupe-600 dark:text-ivory-300/80 font-normal leading-relaxed mb-10 max-w-xl">
-              Nestled in the architectural heart of Kolkata, Aurelia was founded on an unwavering ethos:
-              to transcend conventional beauty parlours and offer an authentic sanctuary of high-fashion bridal
-              aesthetics, medical-grade skin therapies, and an elite makeup masterclass academy.
+              Located in Konnagar, Kanaipur (Gourango Road), Stylish Beauty Salon was founded on an unwavering ethos:
+              to offer high-grade hair treatments, clinical skincare therapies, and dedicated aesthetic transformations.
             </p>
 
             {/* Brand Hallmarks Deck (Staggered scroll reveal) */}

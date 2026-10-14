@@ -1,17 +1,19 @@
 import { SalonInfo } from '../types';
 
 export const salonData: SalonInfo = {
-  name: 'AURELIA',
-  tagline: 'Haute Bridal Aesthetics & Professional Makeup Academy',
-  phone: '+91 98765 43210',
-  whatsappNumber: '919876543210',
-  email: 'concierge@aureliabeauty.com',
-  address: '42 Heritage Boulevard, Park Avenue Row',
-  city: 'Kolkata, WB 700019',
-  timings: 'Tuesday – Sunday : 10:30 AM – 8:00 PM (Monday by Appointment)',
+  name: 'STYLISH BEAUTY SALON',
+  tagline: 'Hair Treatments, Clinical Skin Therapies & Beauty Aesthetics',
+  phone: '+91 70032 40852',
+  phoneRaw: '+917003240852',
+  whatsappNumber: '917003240852',
+  address: 'Konnagar, Kanaipur, Gourango Road (Near Chotu Cycle Shop)',
+  city: 'Hooghly, West Bengal',
+  timings: 'Monday – Sunday : 10:00 AM – 9:00 PM',
+  mapUrl: 'https://maps.app.goo.gl/WQdgWwyFEHHPwn2H7',
+  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d230.0411422113134!2d88.3266453!3d22.7037617!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89dae2ac1a6b1%3A0xeac4c70fc926a56a!2sNail%20extension%20center!5e0!3m2!1sen!2sin!4v1791996582709!5m2!1sen!2sin',
   socials: {
-    instagram: 'https://instagram.com/aurelia.beautyatelier',
-    facebook: 'https://facebook.com/aureliaatelier',
-    youtube: 'https://youtube.com/@aureliabeauty',
+    instagram: '#',
+    facebook: '#',
   },
 };
+

@@ -18,6 +18,7 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
       infinite: false,
     });
     lenisRef.current = lenis;
+    (window as any).__lenis = lenis;
 
     // Direct binding with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
@@ -36,6 +37,7 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
       gsap.ticker.remove(rafCallback);
       lenis.destroy();
       lenisRef.current = null;
+      (window as any).__lenis = null;
     };
   }, []);
 

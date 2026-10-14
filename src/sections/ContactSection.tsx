@@ -6,7 +6,6 @@ import {
   Sparkles,
   MapPin,
   Phone,
-  Mail,
   Clock,
   MessageCircle,
   Send,
@@ -25,7 +24,7 @@ export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    serviceCategory: 'Bridal Artistry',
+    serviceCategory: 'Choose',
     preferredDate: '',
     notes: '',
   });
@@ -98,7 +97,7 @@ export const ContactSection: React.FC = () => {
     const message = `*New Booking Request from Website*%0A%0A*Name:* ${encodeURIComponent(
       formData.name
     )}%0A*Phone:* ${encodeURIComponent(formData.phone)}%0A*Service/Course:* ${encodeURIComponent(
-      formData.serviceCategory
+      formData.serviceCategory === 'Choose' ? 'Consultation / To be decided' : formData.serviceCategory
     )}%0A*Preferred Date:* ${encodeURIComponent(
       formData.preferredDate || 'To be decided'
     )}%0A*Notes:* ${encodeURIComponent(formData.notes || 'None')}`;
@@ -113,7 +112,7 @@ export const ContactSection: React.FC = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative w-full bg-ivory-50 dark:bg-espresso-950 px-6 sm:px-12 md:px-16 py-20 md:py-32 text-espresso-900 dark:text-ivory-100 border-t border-taupe-200/60 dark:border-white/10 transition-colors duration-500 overflow-hidden"
+      className="relative w-full scroll-mt-20 bg-ivory-50 dark:bg-espresso-950 px-4 sm:px-10 md:px-16 py-16 sm:py-24 md:py-32 text-espresso-900 dark:text-ivory-100 border-t border-taupe-200/60 dark:border-white/10 transition-colors duration-500 overflow-hidden"
     >
       {/* Background Subtle Warm Radial Glow */}
       <div
@@ -123,27 +122,27 @@ export const ContactSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header (Slow reveal on scroll) */}
-        <div ref={headerRef} className="flex flex-col items-center text-center mb-16 md:mb-20 transform-gpu">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold-500/30 dark:border-gold-400/30 bg-gold-500/10 text-gold-700 dark:text-gold-400 text-xs font-medium tracking-[0.25em] uppercase mb-3">
+        <div ref={headerRef} className="flex flex-col items-center text-center mb-12 sm:mb-20 transform-gpu">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 rounded-full border border-gold-500/30 dark:border-gold-400/30 bg-gold-500/10 text-gold-700 dark:text-gold-400 text-[0.65rem] sm:text-xs font-medium tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Chapter VIII • Concierge & Booking</span>
+            <span>Chapter VII • Concierge &amp; Booking</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-espresso-950 dark:text-ivory-50 mb-3">
             Begin Your <span className="italic font-normal text-gold-600 dark:text-gold-400">Journey</span>
           </h2>
 
-          <p className="font-sans text-sm sm:text-base text-taupe-600 dark:text-ivory-300/80 max-w-xl">
-            Reserve your bridal trial, book an aesthetic treatment, or apply for our upcoming academy cohorts.
+          <p className="font-sans text-xs sm:text-base text-taupe-600 dark:text-ivory-300/80 max-w-xl px-2 sm:px-0">
+            Reserve your hair transformation, bridal makeover, or skin rejuvenation ritual.
           </p>
         </div>
 
         {/* 2-Column Grid: Contact Information & Interactive Form (Slow scrub reveal) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Left Column: Studio Information & Map Card */}
           <div ref={leftCardRef} className="lg:col-span-5 space-y-6 transform-gpu">
-            <div className="p-8 rounded-3xl bg-ivory-100 dark:bg-espresso-900 border border-taupe-200/80 dark:border-white/10 shadow-luxury-subtle">
-              <h3 className="font-serif text-2xl text-espresso-950 dark:text-ivory-50 font-normal mb-6">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-ivory-100 dark:bg-espresso-900 border border-taupe-200/80 dark:border-white/10 shadow-luxury-subtle">
+              <h3 className="font-serif text-xl sm:text-2xl text-espresso-950 dark:text-ivory-50 font-normal mb-5 sm:mb-6">
                 The Flagship Atelier
               </h3>
 
@@ -155,66 +154,72 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-sans text-xs uppercase tracking-wider text-taupe-600 dark:text-gold-400/80 font-semibold mb-0.5">
-                      Address
+                      Salon Address
                     </h4>
-                    <p className="leading-relaxed font-light text-espresso-900 dark:text-ivory-200">{salonData.address}</p>
+                    <p className="leading-relaxed font-light text-espresso-900 dark:text-ivory-200">
+                      {salonData.address}
+                    </p>
                     <p className="font-light text-espresso-900 dark:text-ivory-200">{salonData.city}</p>
                   </div>
                 </div>
 
-                {/* Telephone */}
+                {/* Telephone / Phone Dialer Intent */}
                 <div className="flex items-start gap-3.5">
                   <div className="w-9 h-9 rounded-full bg-gold-500/10 dark:bg-gold-400/10 text-gold-700 dark:text-gold-400 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="font-sans text-xs uppercase tracking-wider text-taupe-600 dark:text-gold-400/80 font-semibold mb-0.5">
-                      Concierge Desk
+                      Direct Call (Phone Dialer)
                     </h4>
-                    <a
-                      href={`tel:${salonData.phone}`}
-                      className="hover:text-gold-700 dark:hover:text-gold-300 transition-colors font-medium text-espresso-900 dark:text-ivory-200"
-                    >
-                      {salonData.phone}
-                    </a>
+                    <div className="flex flex-wrap items-center gap-2 pt-0.5">
+                      <a
+                        href={`tel:${salonData.phoneRaw}`}
+                        className="hover:text-gold-700 dark:hover:text-gold-300 transition-colors font-medium text-espresso-900 dark:text-ivory-100 text-sm tracking-wide"
+                      >
+                        {salonData.phone}
+                      </a>
+                      <a
+                        href={`tel:${salonData.phoneRaw}`}
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gold-500/15 dark:bg-gold-500/20 text-gold-700 dark:text-gold-300 hover:bg-gold-500 hover:text-espresso-950 text-[0.65rem] font-semibold uppercase tracking-wider transition-colors"
+                        title="Open phone dialer"
+                      >
+                        <Phone className="w-2.5 h-2.5" />
+                        <span>Tap to Call</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                {/* WhatsApp */}
+                {/* WhatsApp Chat Intent */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-full bg-gold-500/10 dark:bg-gold-400/10 text-gold-700 dark:text-gold-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-full bg-emerald-500/10 dark:bg-emerald-400/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <MessageCircle className="w-4 h-4" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="font-sans text-xs uppercase tracking-wider text-taupe-600 dark:text-gold-400/80 font-semibold mb-0.5">
-                      Instant WhatsApp
+                      WhatsApp Concierge
                     </h4>
-                    <a
-                      href={`https://wa.me/${salonData.whatsappNumber}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-gold-700 dark:hover:text-gold-300 transition-colors font-medium text-espresso-900 dark:text-ivory-200"
-                    >
-                      Chat on WhatsApp (+91 98765 43210)
-                    </a>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-full bg-gold-500/10 dark:bg-gold-400/10 text-gold-700 dark:text-gold-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="font-sans text-xs uppercase tracking-wider text-taupe-600 dark:text-gold-400/80 font-semibold mb-0.5">
-                      Email Inquiries
-                    </h4>
-                    <a
-                      href={`mailto:${salonData.email}`}
-                      className="hover:text-gold-700 dark:hover:text-gold-300 transition-colors font-light text-espresso-900 dark:text-ivory-200"
-                    >
-                      {salonData.email}
-                    </a>
+                    <div className="flex flex-wrap items-center gap-2 pt-0.5">
+                      <a
+                        href={`https://wa.me/${salonData.whatsappNumber}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold-700 dark:hover:text-gold-300 transition-colors font-medium text-espresso-900 dark:text-ivory-100 text-sm tracking-wide"
+                      >
+                        {salonData.phone}
+                      </a>
+                      <a
+                        href={`https://wa.me/${salonData.whatsappNumber}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white text-[0.65rem] font-semibold uppercase tracking-wider transition-colors"
+                        title="Open WhatsApp chat"
+                      >
+                        <MessageCircle className="w-2.5 h-2.5" />
+                        <span>Tap to Chat</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -225,7 +230,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-sans text-xs uppercase tracking-wider text-taupe-600 dark:text-gold-400/80 font-semibold mb-0.5">
-                      Studio Hours
+                      Salon Hours
                     </h4>
                     <p className="text-xs text-taupe-600 dark:text-ivory-300/70 leading-relaxed font-light">
                       {salonData.timings}
@@ -235,43 +240,65 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Visual Location Card / Google Maps Placeholder */}
-            <div className="p-6 rounded-3xl bg-ivory-100 dark:bg-espresso-900 border border-taupe-200/80 dark:border-white/10 relative overflow-hidden flex flex-col justify-between">
-              <div className="relative aspect-[16/7] rounded-2xl overflow-hidden bg-taupe-200 mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop"
-                  alt="Aurelia Studio Interior"
-                  className="w-full h-full object-cover filter contrast-[1.02]"
-                />
-                <div className="absolute inset-0 bg-espresso-950/40 flex items-center justify-center text-ivory-50">
-                  <div className="text-center p-3">
-                    <span className="font-serif text-lg font-normal block">Park Avenue Row</span>
-                    <span className="text-[0.65rem] tracking-wider uppercase text-gold-300">
-                      Central Kolkata Location
-                    </span>
-                  </div>
+            {/* Visual Location Card / Interactive Embedded Google Map */}
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-ivory-100 dark:bg-espresso-900 border border-taupe-200/80 dark:border-white/10 relative overflow-hidden flex flex-col justify-between shadow-luxury-subtle">
+              <div className="flex items-center justify-between mb-3">
+                <div>
+                  <h4 className="font-serif text-lg text-espresso-950 dark:text-ivory-50 font-normal">
+                    Interactive Location Map
+                  </h4>
+                  <p className="text-[0.7rem] uppercase tracking-wider text-taupe-600 dark:text-gold-400/80 font-medium">
+                    Konnagar, Kanaipur • Gourango Road
+                  </p>
                 </div>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gold-500/10 text-gold-700 dark:text-gold-400 text-[0.65rem] font-semibold uppercase tracking-wider">
+                  <MapPin className="w-3 h-3 text-gold-600 dark:text-gold-400" />
+                  Live Navigation
+                </span>
               </div>
 
-              <a
-                href="https://maps.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between text-xs font-semibold tracking-wider uppercase text-gold-700 dark:text-gold-400 hover:text-espresso-950 dark:hover:text-white transition-colors pt-1 cursor-pointer"
+              {/* Embedded Google Map Iframe with data-lenis-prevent to isolate scroll */}
+              <div
+                data-lenis-prevent
+                className="relative w-full h-56 sm:h-72 rounded-2xl overflow-hidden border border-taupe-200/80 dark:border-white/10 shadow-inner mb-4 bg-taupe-100 dark:bg-espresso-950"
               >
-                <span>Open in Google Maps</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
+                <iframe
+                  src={salonData.mapEmbedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Stylish Beauty Salon Location Map"
+                  className="w-full h-full filter saturate-[1.1] contrast-[1.02]"
+                />
+              </div>
+
+              <div className="flex items-center justify-between pt-1">
+                <span className="text-[0.7rem] text-taupe-600 dark:text-ivory-300/70 font-light">
+                  Near Chotu Cycle Shop, Konnagar
+                </span>
+                <a
+                  href={salonData.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase text-gold-700 dark:text-gold-400 hover:text-espresso-950 dark:hover:text-white transition-colors cursor-pointer"
+                >
+                  <span>Open Maps</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Right Column: Interactive Booking & WhatsApp Inquiry Form */}
           <div ref={rightFormRef} className="lg:col-span-7 transform-gpu">
-            <div className="p-8 sm:p-10 rounded-3xl bg-ivory-100 dark:bg-espresso-900 border border-taupe-200/80 dark:border-white/10 shadow-luxury-elevated">
+            <div className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-ivory-100 dark:bg-espresso-900 border border-taupe-200/80 dark:border-white/10 shadow-luxury-elevated">
               <h3 className="font-serif text-2xl sm:text-3xl text-espresso-950 dark:text-ivory-50 font-normal mb-2">
                 Reserve An Appointment or Course
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-taupe-600 dark:text-ivory-300/80 leading-relaxed mb-8 font-light">
+              <p className="font-sans text-xs sm:text-sm text-taupe-600 dark:text-ivory-300/80 leading-relaxed mb-6 sm:mb-8 font-light">
                 Fill in your details below to instantly generate a verified WhatsApp consultation
                 request with our concierge desk.
               </p>
@@ -285,9 +312,9 @@ export const ContactSection: React.FC = () => {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                 {/* Full Name & Phone */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className="block font-sans text-xs uppercase tracking-wider text-taupe-600 dark:text-gold-400/80 font-semibold mb-2">
                       Your Full Name *
@@ -298,7 +325,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="e.g. Ananya Sen"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-base sm:text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors"
                     />
                   </div>
 
@@ -312,7 +339,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="+91 98765 00000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-base sm:text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors"
                     />
                   </div>
                 </div>
@@ -328,22 +355,38 @@ export const ContactSection: React.FC = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, serviceCategory: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-base sm:text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors cursor-pointer"
                     >
-                      <option value="Bridal Artistry & Makeover">Couture Bridal Artistry</option>
-                      <option value="Pre-Bridal Skincare & Facials">Pre-Bridal Clinical Skincare</option>
-                      <option value="Haute Hair & Updo Styling">Haute Hair Styling</option>
-                      <option value="Nails & Cashmere Lashes">Nail & Lash Studio</option>
-                      <option value="Diploma in Professional Artistry (8 Weeks)">
-                        Academy: 8-Week Diploma
-                      </option>
-                      <option value="Airbrush Masterclass (2 Weeks)">
-                        Academy: Airbrush Masterclass
-                      </option>
-                      <option value="Hair Architecture Course">Academy: Bridal Hair Course</option>
-                      <option value="Personal Self-Grooming Masterclass">
-                        Academy: Self-Grooming
-                      </option>
+                      <option value="Choose">Choose</option>
+                      <option value="Hair Treatment">Hair Treatment</option>
+                      <option value="Straightening">Straightening</option>
+                      <option value="Smoothing">Smoothing</option>
+                      <option value="Silk Treatment">Silk Treatment</option>
+                      <option value="Rebonding">Rebonding</option>
+                      <option value="Keratin Treatment">Keratin Treatment</option>
+                      <option value="Botox Treatment">Botox Treatment</option>
+                      <option value="Permanent Spa">Permanent Spa</option>
+                      <option value="Different Types Spa (Dandruff Treatment)">Different Types Spa (Dandruff Treatment)</option>
+                      <option value="Kera Smooth">Kera Smooth</option>
+                      <option value="Botox Smooth">Botox Smooth</option>
+                      <option value="Nanoplastia Treatment">Nanoplastia Treatment</option>
+                      <option value="Permanent Nanoplastia">Permanent Nanoplastia</option>
+                      <option value="Treatment Spa">Treatment Spa</option>
+                      <option value="Head Massage">Head Massage</option>
+                      <option value="Hair Color">Hair Color</option>
+                      <option value="Pedicure">Pedicure</option>
+                      <option value="Body Polishing">Body Polishing</option>
+                      <option value="Anti Aging Treatment">Anti Aging Treatment</option>
+                      <option value="Detan with Polishing">Detan with Polishing</option>
+                      <option value="Hydro Facial">Hydro Facial</option>
+                      <option value="Glycolic Peel">Glycolic Peel</option>
+                      <option value="Lactic Peel">Lactic Peel</option>
+                      <option value="Ozone Treatment">Ozone Treatment</option>
+                      <option value="Melasma - Hyper">Melasma - Hyper</option>
+                      <option value="Earlobe Pasting (Ear hole joining)">Earlobe Pasting (Ear hole joining)</option>
+                      <option value="Fire Botox">Fire Botox</option>
+                      <option value="Body Massage">Body Massage</option>
+                      <option value="Piercing done (Ear piercing)">Piercing done (Ear piercing)</option>
                     </select>
                   </div>
 
@@ -357,7 +400,7 @@ export const ContactSection: React.FC = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, preferredDate: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-base sm:text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors cursor-pointer"
                     />
                   </div>
                 </div>
@@ -372,7 +415,7 @@ export const ContactSection: React.FC = () => {
                     placeholder="Tell us about your event, venue, outfit palette, or any specific questions..."
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-ivory-50 dark:bg-espresso-950 border border-taupe-200 dark:border-white/15 text-espresso-950 dark:text-ivory-50 text-base sm:text-sm focus:outline-none focus:border-gold-600 dark:focus:border-gold-400 transition-colors resize-none"
                   />
                 </div>
 

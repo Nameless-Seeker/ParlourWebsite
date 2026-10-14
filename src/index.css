@@ -10,8 +10,7 @@
 
   body {
     overflow-x: hidden;
-    background-color: #FDFBF7;
-    color: #1A1412;
+    @apply bg-ivory-50 dark:bg-espresso-950 text-espresso-900 dark:text-ivory-100 transition-colors duration-500;
   }
 }
 
@@ -53,13 +52,14 @@ html.lenis, html.lenis body {
 
 /* Glassmorphism accents */
 .glass-nav {
-  background: rgba(253, 251, 247, 0.85);
+  background: rgba(253, 251, 247, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
+.dark .glass-nav,
 .glass-dark-nav {
-  background: rgba(14, 12, 11, 0.75);
+  background: rgba(14, 12, 11, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -81,3 +81,13 @@ html.lenis, html.lenis body {
 ::-webkit-scrollbar-thumb:hover {
   background: #C5A880;
 }
+
+/* Horizontal scrollbar utility for mobile carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

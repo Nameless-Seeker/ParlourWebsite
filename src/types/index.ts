@@ -8,11 +8,14 @@ export interface SalonInfo {
   name: string;
   tagline: string;
   phone: string;
+  phoneRaw: string;
   whatsappNumber: string;
-  email: string;
+  email?: string;
   address: string;
   city: string;
   timings: string;
+  mapUrl: string;
+  mapEmbedUrl?: string;
   socials: {
     instagram: string;
     facebook: string;
@@ -20,7 +23,7 @@ export interface SalonInfo {
   };
 }
 
-export type ServiceCategory = 'bridal' | 'skincare' | 'hair' | 'nails';
+export type ServiceCategory = 'grooming' | 'hair-skin' | 'styling-makeup';
 
 export interface ServiceItem {
   id: string;
@@ -28,7 +31,7 @@ export interface ServiceItem {
   subtitle: string;
   category: ServiceCategory;
   duration: string;
-  pricePlaceholder: string;
+  pricePlaceholder?: string;
   description: string;
   inclusions: string[];
   image: string;
@@ -57,7 +60,7 @@ export interface AcademyPerk {
   iconName: string;
 }
 
-export type GalleryCategory = 'all' | 'bridal' | 'reception' | 'editorial' | 'hair-skin';
+export type GalleryCategory = 'grooming' | 'hair-skin' | 'styling-makeup';
 
 export interface GalleryItem {
   id: string;

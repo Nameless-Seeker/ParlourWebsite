@@ -18,30 +18,30 @@ export const Footer: React.FC = () => {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 md:px-16 relative z-10">
         {/* Giant Editorial Brand Typography Banner */}
-        <div className="border-b border-white/10 pb-12 mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+        <div className="border-b border-white/10 pb-8 sm:pb-12 mb-10 sm:mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
           <div>
-            <span className="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-[0.2em] text-ivory-100 block">
+            <span className="font-serif text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[0.12em] sm:tracking-[0.2em] text-ivory-100 block">
               {salonData.name}
             </span>
-            <p className="font-sans text-xs sm:text-sm tracking-[0.3em] uppercase text-gold-400 font-medium mt-2">
-              Haute Bridal Atelier & Makeup Academy
+            <p className="font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] sm:tracking-[0.3em] uppercase text-gold-400 font-medium mt-2">
+              Haute Bridal Atelier &amp; Makeup Academy
             </p>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-full border border-white/20 text-xs tracking-widest uppercase text-ivory-200 hover:text-gold-300 hover:border-gold-400 hover:bg-white/5 transition-all duration-300"
+            className="group inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border border-white/20 text-[0.7rem] sm:text-xs tracking-widest uppercase text-ivory-200 hover:text-gold-300 hover:border-gold-400 hover:bg-white/5 transition-all duration-300"
             aria-label="Back to top of page"
           >
             <span>Back to Top</span>
-            <ArrowUp className="w-4 h-4 text-gold-400 transition-transform duration-300 group-hover:-translate-y-1" />
+            <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold-400 transition-transform duration-300 group-hover:-translate-y-1" />
           </button>
         </div>
 
         {/* 4-Column Footer Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 mb-16 text-xs sm:text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 mb-12 sm:mb-16 text-xs sm:text-sm">
           {/* Column 1: Brand Philosophy (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className="font-serif text-lg text-ivory-100 font-normal tracking-wider">
@@ -112,27 +112,22 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a href="#services" className="hover:text-gold-300 transition-colors">
-                  Curated Services
+                  Services We Provide
                 </a>
               </li>
               <li>
-                <a href="#academy" className="hover:text-gold-300 transition-colors">
-                  Makeup Academy
+                <a href="#projects" className="hover:text-gold-300 transition-colors">
+                  Our Work & Projects
                 </a>
               </li>
               <li>
                 <a href="#portfolio" className="hover:text-gold-300 transition-colors">
-                  Editorial Portfolio
+                  What We Teach
                 </a>
               </li>
               <li>
                 <a href="#artist" className="hover:text-gold-300 transition-colors">
                   The Master Artist
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="hover:text-gold-300 transition-colors">
-                  Client Stories
                 </a>
               </li>
               <li>
@@ -143,35 +138,45 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Academy Diplomas (lg:col-span-3) */}
+          {/* Column 3: Signature Offerings (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-serif text-lg text-ivory-100 font-normal tracking-wider mb-4">
-              Academy Cohorts
+              Signature Treatments
             </h4>
             <ul className="space-y-2.5 text-xs text-ivory-300/70">
               <li>
-                <a href="#academy" className="hover:text-gold-300 transition-colors block">
-                  8-Week Bridal Artistry Diploma
+                <a href="#services" className="hover:text-gold-300 transition-colors block">
+                  Hair Straightening & Rebonding
                 </a>
               </li>
               <li>
-                <a href="#academy" className="hover:text-gold-300 transition-colors block">
-                  Advanced Airbrush Masterclass
+                <a href="#services" className="hover:text-gold-300 transition-colors block">
+                  Keratin & Silk Smoothing
                 </a>
               </li>
               <li>
-                <a href="#academy" className="hover:text-gold-300 transition-colors block">
-                  Couture Bridal Hair Architecture
+                <a href="#services" className="hover:text-gold-300 transition-colors block">
+                  Hydro Facial & Skin Rejuvenation
                 </a>
               </li>
               <li>
-                <a href="#academy" className="hover:text-gold-300 transition-colors block">
-                  Personal Grooming Intensive
+                <a href="#services" className="hover:text-gold-300 transition-colors block">
+                  Luxury Spa Pedicure & Manicure
                 </a>
               </li>
               <li>
-                <a href="#academy" className="hover:text-gold-300 transition-colors block text-gold-400">
-                  Request Course Syllabus PDF →
+                <a href="#services" className="hover:text-gold-300 transition-colors block">
+                  Couture Bridal Makeovers
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`https://wa.me/${salonData.whatsappNumber}?text=Hello%20${encodeURIComponent(salonData.name)},%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gold-300 transition-colors block text-gold-400"
+                >
+                  Inquire on WhatsApp →
                 </a>
               </li>
             </ul>
@@ -190,14 +195,29 @@ export const Footer: React.FC = () => {
               </p>
               <p className="pt-1">
                 <strong>Tel:</strong>{' '}
-                <a href={`tel:${salonData.phone}`} className="hover:text-gold-400">
+                <a href={`tel:${salonData.phoneRaw}`} className="hover:text-gold-400 transition-colors">
                   {salonData.phone}
                 </a>
               </p>
               <p>
-                <strong>Email:</strong>{' '}
-                <a href={`mailto:${salonData.email}`} className="hover:text-gold-400">
-                  {salonData.email}
+                <strong>WhatsApp:</strong>{' '}
+                <a
+                  href={`https://wa.me/${salonData.whatsappNumber}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-gold-400 transition-colors"
+                >
+                  {salonData.phone}
+                </a>
+              </p>
+              <p className="pt-1">
+                <a
+                  href={salonData.mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-gold-400 hover:text-gold-300 transition-colors inline-block text-[0.75rem]"
+                >
+                  Find Us on Google Maps →
                 </a>
               </p>
               <p className="pt-2 text-[0.7rem] text-ivory-400 border-t border-white/10">

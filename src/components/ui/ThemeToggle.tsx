@@ -13,7 +13,7 @@ export const ThemeToggle: React.FC<{ className?: string; showLabel?: boolean }> 
   return (
     <button
       onClick={toggleTheme}
-      className={`relative inline-flex items-center gap-2 p-2 sm:px-3 sm:py-2 rounded-full border border-white/20 hover:border-gold-400/80 bg-white/5 hover:bg-white/10 text-ivory-100 hover:text-gold-300 transition-all duration-300 focus:outline-none cursor-pointer ${className}`}
+      className={`relative inline-flex items-center gap-2 p-2 sm:px-3 sm:py-2 rounded-full border border-taupe-300/80 dark:border-white/20 hover:border-gold-500 dark:hover:border-gold-400 bg-ivory-100/80 dark:bg-white/5 hover:bg-gold-500/10 dark:hover:bg-white/10 text-espresso-900 dark:text-ivory-100 hover:text-gold-700 dark:hover:text-gold-300 transition-all duration-300 focus:outline-none cursor-pointer shadow-sm ${className}`}
       title={isDark ? 'Switch to Light Atelier Theme' : 'Switch to Nocturne Dark Theme'}
       aria-label={isDark ? 'Switch to Light Atelier Theme' : 'Switch to Nocturne Dark Theme'}
     >
@@ -37,7 +37,7 @@ export const ThemeToggle: React.FC<{ className?: string; showLabel?: boolean }> 
               animate={{ rotate: 0, scale: 1, opacity: 1 }}
               exit={{ rotate: -90, scale: 0, opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="text-ivory-100"
+              className="text-espresso-800"
             >
               <Moon className="w-4 h-4" />
             </motion.div>
