@@ -8,10 +8,6 @@
           "value": "application/xml; charset=utf-8"
         },
         {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'none'"
-        },
-        {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         }
