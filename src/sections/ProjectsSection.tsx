@@ -9,7 +9,7 @@ import { Sparkles, Maximize2, X, MessageCircle, ArrowRight, Check } from 'lucide
 gsap.registerPlugin(ScrollTrigger);
 
 export const ProjectsSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'bridal' | 'nails'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'bridal' | 'nails' | 'hair' | 'grooming'>('all');
   const [activeModalItem, setActiveModalItem] = useState<ProjectItem | null>(null);
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -124,7 +124,7 @@ export const ProjectsSection: React.FC = () => {
               return (
                 <button
                   key={category.id}
-                  onClick={() => setActiveCategory(category.id as 'all' | 'bridal' | 'nails')}
+                  onClick={() => setActiveCategory(category.id as 'all' | 'bridal' | 'nails' | 'hair' | 'grooming')}
                   className={`relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-[0.7rem] sm:text-sm font-medium tracking-wider uppercase transition-colors duration-300 focus:outline-none cursor-pointer ${
                     isActive
                       ? 'text-ivory-50 dark:text-espresso-950 font-semibold'

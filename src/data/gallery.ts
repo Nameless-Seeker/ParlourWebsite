@@ -13,7 +13,7 @@ export const galleryItems: GalleryItem[] = [
     title: 'THREADING',
     category: 'grooming',
     categoryLabel: 'Grooming & Relaxation',
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/projects/project-brow-1.jpg',
     tag: 'Eyebrow & Facial Shaping',
     description: 'Symmetrical eyebrow mapping and clean contouring that frames the eyes and enhances natural facial balance.',
     aspectRatio: 'portrait',

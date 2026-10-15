@@ -39,7 +39,7 @@ export const coursesData: CourseItem[] = [
       'Dupatta Draping, Jewelry Architecture & Bridal Styling',
       'Social Media Branding, Client Pricing & Bridal Business Launch',
     ],
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/projects/project-cert-1.jpg',
     isFeatured: true,
   },
   {
