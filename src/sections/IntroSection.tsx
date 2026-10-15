@@ -188,7 +188,7 @@ export const IntroSection: React.FC = () => {
               <div className="flex flex-col transform-gpu">
                 <div className="flex items-center gap-2 text-gold-600 dark:text-gold-400 mb-2">
                   <Award className="w-4 h-4" />
-                  <span className="font-serif text-3xl font-normal text-espresso-950 dark:text-ivory-50">12+</span>
+                  <span className="font-serif text-3xl font-normal text-espresso-950 dark:text-ivory-50">6+</span>
                 </div>
                 <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-espresso-900 dark:text-ivory-100 mb-1">
                   Years of Couture
@@ -201,7 +201,7 @@ export const IntroSection: React.FC = () => {
               <div className="flex flex-col transform-gpu">
                 <div className="flex items-center gap-2 text-gold-600 dark:text-gold-400 mb-2">
                   <HeartHandshake className="w-4 h-4" />
-                  <span className="font-serif text-3xl font-normal text-espresso-950 dark:text-ivory-50">2,800+</span>
+                  <span className="font-serif text-3xl font-normal text-espresso-950 dark:text-ivory-50">500+</span>
                 </div>
                 <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-espresso-900 dark:text-ivory-100 mb-1">
                   Brides Perfected
